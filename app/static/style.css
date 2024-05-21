@@ -36,11 +36,13 @@ body {
 }
 
 .text-areas textarea[name="text_to_translate"] {
-    color: darkred; /* Texte inséré en rouge foncé */
+    color: darkred; 
+    background-color: azure;
 }
 
 .text-areas textarea[disabled] {
-    color: darkgreen; /* Texte traduit en vert foncé */
+    color: darkgreen; 
+    background-color: azure;
 }
 
 .text-areas textarea {

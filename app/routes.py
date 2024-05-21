@@ -45,3 +45,11 @@ def save_history():
 
     # Redirect to the index page
     return redirect(url_for('index'))
+
+@app.route('/clear_history', methods=['POST'])
+def clear_history():
+    # Clear the session
+    session['translations'] = []
+
+    # Redirect to the index page
+    return redirect(url_for('index'))

@@ -47,6 +47,19 @@ body {
     width: 45%;
 }
 
+.history-header {
+    display: flex;
+    margin-right: 10px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.history-controls {
+    display: flex;
+    gap: 10px;
+}
+
 /* Media query for screens smaller than 600px */
 @media (max-width: 600px) {
     .form-container {

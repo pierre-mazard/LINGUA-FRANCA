@@ -45,17 +45,24 @@
                 <textarea disabled>{{ translation }}</textarea>
             </div>
             <div class="history">
-                <h2>Translation History</h2>
+                <div class="history-header">
+                    <h2>Translation History</h2>
+                    <div class="history-controls">
+                        <form method="POST" action="/save_history">
+                            <input type="submit" value="Save History">
+                        </form>
+                        <form method="POST" action="/clear_history">
+                            <input type="submit" value="Clear History">
+                        </form>
+                    </div>
+                </div>
                 {% for time, source_lang, target_lang, original, translated in translations %}
-                <p><strong>Time:</strong> {{ time }}</p>
+                <p><strong>DateTime:</strong> {{ time }}</p>
                 <p><strong>Original:</strong> {{ original }}</p>
                 <p><strong>Translated:</strong> {{ translated }}</p>
                 <hr>
                 {% endfor %}
             </div>            
-        </form>
-        <form method="POST" action="/save_history">
-            <input type="submit" value="Save History">
         </form>
     </div>
     <script src='{{ url_for('static', filename='script.js') }}'></script>

@@ -15,8 +15,8 @@ def index():
     translator = GoogleTranslate()
     translation = ''
     text_to_translate = ''
-    history_text = ''  # Nouvelle variable pour le texte de l'historique
-    history_translation = ''  # Nouvelle variable pour la traduction de l'historique
+    history_text = ''  # New variable for the original text
+    history_translation = ''  # new variable for the translation of the history
     if 'translations' not in session:
         session['translations'] = []
     if request.method == 'POST':
@@ -37,31 +37,32 @@ def index():
 
 @app.route('/save_history', methods=['POST'])
 def save_history():
-    try:
-        # Get the current date and time
-        now = datetime.now()
-
-        # Format the date and time
-        date_time = now.strftime("%Y-%m-%d_%H-%M-%S")
-
-        # Create the filename
-        filename = 'data/' + date_time + '_history.csv'
-
-        print(session['translations'])
-
-        # Write the translations to the file
-        with open(filename, 'w', newline='', encoding='utf-8') as f:
-            writer = csv.writer(f)
-            writer.writerow(["Time", "Source Language", "Target Language", "Original Text", "Translated Text"])
-            writer.writerows(session['translations'])
-
-        # After writing to the file, clear the session
-        session['translations'] = []
-
-        # Redirect to the index page
+    # Check if the session is empty
+    if not session['translations']:
+        # If the session is empty, redirect to the index page
         return redirect(url_for('index'))
-    except Exception as e:
-        print(e)
+
+    # Get the current date and time
+    now = datetime.now()
+
+    # Format the date and time
+    date_time = now.strftime("%Y-%m-%d_%H-%M-%S")
+
+    # Create the filename
+    filename = 'data/' + date_time + '_history.csv'
+
+    # Write the translations to the file
+    with open(filename, 'w', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f)
+        writer.writerow(["Time", "Source Language", "Target Language", "Original Text", "Translated Text"])
+        writer.writerows(session['translations'])
+
+    # After writing to the file, clear the session
+    session['translations'] = []
+
+    # Redirect to the index page
+    return redirect(url_for('index'))
+
 
 @app.route('/clear_history', methods=['POST'])
 def clear_history():

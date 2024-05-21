@@ -1,5 +1,3 @@
-<!-- Homepage HTM template -->
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,19 +11,19 @@
             <div class="language-selection">
                 <select name="source_language">
                     <option value="auto">Automatic detection</option>
-                    <option value="fr">Français</option>
-                    <option value="en">Anglais</option>
+                    <option value="fr">French</option>
+                    <option value="en">English</option>
                     <!-- add other languages ​​here -->
                 </select>
                 <select name="target_language">
-                    <option value="fr">Français</option>
-                    <option value="en">Anglais</option>
+                    <option value="fr">French</option>
+                    <option value="en">English</option>
                     <!-- add other languages ​​here -->
                 </select>
-                <input type="submit" value="Traduire">
+                <input type="submit" value="Translate">
             </div>
             <div class="text-areas">
-                <textarea name="text_to_translate" placeholder="Entrez le texte ici"></textarea>
+                <textarea name="text_to_translate" placeholder="Enter text here"></textarea>
                 <textarea disabled>{{ translation }}</textarea>
             </div>
         </form>

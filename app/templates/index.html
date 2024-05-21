@@ -44,6 +44,14 @@
                 <textarea name="text_to_translate" placeholder="Enter text here">{{ text_to_translate }}</textarea>
                 <textarea disabled>{{ translation }}</textarea>
             </div>
+            <div class="history">
+                <h2>Translation History</h2>
+                {% for original, translated in translations %}
+                    <p><strong>Original:</strong> {{ original }}</p>
+                    <p><strong>Translated:</strong> {{ translated }}</p>
+                    <hr>
+                {% endfor %}
+            </div>            
         </form>
     </div>
     <script src='{{ url_for('static', filename='script.js') }}'></script>

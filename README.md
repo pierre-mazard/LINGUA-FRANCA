@@ -10,6 +10,9 @@ lingua-franca/
 │   └── templates/           # Contains HTML templates
 │       └── index.html       # Main page of the application
 │
+├── data/                    # Folder for generated data files
+│   └── history.csv          # CSV file with translation history
+│
 ├── picture/                 # Folder containing images displayed in the README 
 ├── translator/              # Folder containing the translation code
 │   ├── __init__.py          # Initializes the translation module
@@ -17,4 +20,5 @@ lingua-franca/
 │
 ├── .gitignore               # Git file to ignore specific files/folders
 ├── README.md                # Project documentation
-└── requirements.txt         # List of Python dependencies 
+└── requirements.txt         # List of Python dependencies
+

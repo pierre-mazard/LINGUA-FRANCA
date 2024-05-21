@@ -46,12 +46,16 @@
             </div>
             <div class="history">
                 <h2>Translation History</h2>
-                {% for original, translated in translations %}
-                    <p><strong>Original:</strong> {{ original }}</p>
-                    <p><strong>Translated:</strong> {{ translated }}</p>
-                    <hr>
+                {% for time, source_lang, target_lang, original, translated in translations %}
+                <p><strong>Time:</strong> {{ time }}</p>
+                <p><strong>Original:</strong> {{ original }}</p>
+                <p><strong>Translated:</strong> {{ translated }}</p>
+                <hr>
                 {% endfor %}
             </div>            
+        </form>
+        <form method="POST" action="/save_history">
+            <input type="submit" value="Save History">
         </form>
     </div>
     <script src='{{ url_for('static', filename='script.js') }}'></script>

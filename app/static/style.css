@@ -1,0 +1,24 @@
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.form-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.language-selection {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.text-areas {
+    display: flex;
+    justify-content: space-between;
+}
+
+.text-areas textarea {
+    width: 45%;
+}

@@ -1,0 +1,35 @@
+<!-- Modèle HTM de la page d'accueil -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lingua Franca</title>
+    <link rel='stylesheet' href='{{ url_for('static', filename='style.css') }}'>
+</head>
+<body>
+    <h1>Bienvenue sur Lingua Franca!</h1> 
+    <div class="form-container">
+        <form method="POST">
+            <div class="language-selection">
+                <select name="source_language">
+                    <option value="auto">Détection automatique</option>
+                    <option value="fr">Français</option>
+                    <option value="en">Anglais</option>
+                    <!-- Ajoutez d'autres langues ici -->
+                </select>
+                <select name="target_language">
+                    <option value="fr">Français</option>
+                    <option value="en">Anglais</option>
+                    <!-- Ajoutez d'autres langues ici -->
+                </select>
+                <input type="submit" value="Traduire">
+            </div>
+            <div class="text-areas">
+                <textarea name="text_to_translate" placeholder="Entrez le texte ici"></textarea>
+                <textarea disabled>{{ translation }}</textarea>
+            </div>
+        </form>
+    </div>
+    <script src='{{ url_for('static', filename='script.js') }}'></script>
+</body>
+</html>

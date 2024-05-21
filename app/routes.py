@@ -6,6 +6,10 @@ import csv
 import os
 from datetime import datetime
 
+if not os.path.isdir('data/'):
+    print("Le dossier 'data/' n'existe pas.")
+
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     translator = GoogleTranslate()
@@ -25,26 +29,31 @@ def index():
 
 @app.route('/save_history', methods=['POST'])
 def save_history():
-    # Get the current date and time
-    now = datetime.now()
+    try:
+        # Get the current date and time
+        now = datetime.now()
 
-    # Format the date and time
-    date_time = now.strftime("%Y-%m-%d_%H-%M-%S")
+        # Format the date and time
+        date_time = now.strftime("%Y-%m-%d_%H-%M-%S")
 
-    # Create the filename
-    filename = 'data/' + date_time + '_history.csv'
+        # Create the filename
+        filename = 'data/' + date_time + '_history.csv'
 
-    # Write the translations to the file
-    with open(filename, 'w', newline='', encoding='utf-8') as f:
-        writer = csv.writer(f)
-        writer.writerow(["Time", "Source Language", "Target Language", "Original Text", "Translated Text"])
-        writer.writerows(session['translations'])
+        print(session['translations'])
 
-    # After writing to the file, clear the session
-    session['translations'] = []
+        # Write the translations to the file
+        with open(filename, 'w', newline='', encoding='utf-8') as f:
+            writer = csv.writer(f)
+            writer.writerow(["Time", "Source Language", "Target Language", "Original Text", "Translated Text"])
+            writer.writerows(session['translations'])
 
-    # Redirect to the index page
-    return redirect(url_for('index'))
+        # After writing to the file, clear the session
+        session['translations'] = []
+
+        # Redirect to the index page
+        return redirect(url_for('index'))
+    except Exception as e:
+        print(e)
 
 @app.route('/clear_history', methods=['POST'])
 def clear_history():

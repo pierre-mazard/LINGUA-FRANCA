@@ -9,7 +9,8 @@
         <h1>Welcome to Lingua Franca !</h1>
     </div>     
     <div class="form-container">
-        <form method="POST">
+        <!-- Formulaire de traduction -->
+        <form method="POST" action="/">
             <div class="language-selection">
                 <select name="source_language">
                     <option value="auto">Automatic detection</option>
@@ -44,26 +45,28 @@
                 <textarea name="text_to_translate" placeholder="Enter text here">{{ text_to_translate }}</textarea>
                 <textarea disabled>{{ translation }}</textarea>
             </div>
-            <div class="history">
-                <div class="history-header">
-                    <h2>Translation History</h2>
-                    <div class="history-controls">
-                        <form method="POST" action="/save_history">
-                            <input type="submit" value="Save History">
-                        </form>
-                        <form method="POST" action="/clear_history">
-                            <input type="submit" value="Clear History">
-                        </form>
-                    </div>
-                </div>
-                {% for time, source_lang, target_lang, original, translated in translations %}
-                <p><strong>DateTime:</strong> {{ time }}</p>
-                <p><strong>Original:</strong> {{ original }}</p>
-                <p><strong>Translated:</strong> {{ translated }}</p>
-                <hr>
-                {% endfor %}
-            </div>            
         </form>
+        <div class="history">
+            <div class="history-header">
+                <h2>Translation History</h2>
+                <div class="history-controls">
+                    <!-- Formulaire Save History -->
+                    <form method="POST" action="/save_history">
+                        <input type="submit" value="Save History">
+                    </form>
+                    <!-- Formulaire Clear History -->
+                    <form method="POST" action="/clear_history">
+                        <input type="submit" value="Clear History">
+                    </form>
+                </div>
+            </div>
+            {% for time, source_lang, target_lang, original, translated in translations %}
+            <p><strong>DateTime:</strong> {{ time }}</p>
+            <p><strong>Original:</strong> {{ original }}</p>
+            <p><strong>Translated:</strong> {{ translated }}</p>
+            <hr>
+            {% endfor %}
+        </div>            
     </div>
     <script src='{{ url_for('static', filename='script.js') }}'></script>
 </body>

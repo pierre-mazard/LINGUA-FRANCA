@@ -1,15 +1,13 @@
-# Code de connection à l'API de traduction de Google
-
+# Google Translation API connection code
 from googletrans import Translator 
 
-class GoogleTranslate: # Création de la classe GoogleTranslate
-    def __init__(self): # Initialisation de la classe
-        self.translator = Translator() # Création d'une instance de la classe Translator
+class GoogleTranslate: # Creation of the GoogleTranslate class
+    def __init__(self): # Class initialization
+        self.translator = Translator() # Creating an instance of the Translator class
+    def translate(self, text, src='auto', dest='en'): # Definition of the translate method
+        translation = self.translator.translate(text, src=src, dest=dest) # Text translation
+        return translation.text # Returning the translated text
 
-    def translate(self, text, src='auto', dest='en'): # Définition de la méthode translate
-        translation = self.translator.translate(text, src=src, dest=dest) # Traduction du texte
-        return translation.text # Renvoi du texte traduit
-
-    def detect(self, text): # Définition de la méthode detect
-        detection = self.translator.detect(text) # Détection de la langue du texte
-        return detection.lang # Renvoi de la langue détectée
+    def detect(self, text): # Definition of the detect method
+        detection = self.translator.detect(text) # Text language detection
+        return detection.lang # Return detected language

@@ -1,19 +1,20 @@
-Structure :
+App structure :
 
 lingua-franca/
 │
-├── app/                     # Dossier contenant l'application Flask
-│   ├── __init__.py          # Initialise l'application Flask
-│   ├── routes.py            # Définit les routes de l'application
-│   ├── static/              # Contient les fichiers statiques (CSS, JS, ...)
-│   │   ├── style.css        # Feuille de style CSS
-│   └── templates/           # Contient les modèles HTML
-│       └── index.html       # Page principale de l'application
+├── app/                     # Folder containing the Flask application
+│   ├── __init__.py          # Initializes the Flask application
+│   ├── routes.py            # Defines the application's routes
+│   ├── static/              # Contains static files (CSS, JS, ...)
+│   │   ├── style.css        # CSS stylesheet
+│   └── templates/           # Contains HTML templates
+│       └── index.html       # Main page of the application
 │
-├── translator/              # Dossier contenant le code de traduction
-│   ├── __init__.py          # Initialise le module de traduction
-│   └── google_translate.py  # Se connecte à l'API de traduction de Google
+├── picture/                 # Folder containing images displayed in the README 
+├── translator/              # Folder containing the translation code
+│   ├── __init__.py          # Initializes the translation module
+│   └── google_translate.py  # Connects to Google's translation API
 │
-├── .gitignore               # Fichier Git pour ignorer les fichiers/dossiers spécifiques
-├── README.md                # Documentation du projet
-└── requirements.txt         # Liste des dépendances Python
+├── .gitignore               # Git file to ignore specific files/folders
+├── README.md                # Project documentation
+└── requirements.txt         # List of Python dependencies 

@@ -1,4 +1,4 @@
-<!-- Modèle HTM de la page d'accueil -->
+<!-- Homepage HTM template -->
 
 <!DOCTYPE html>
 <html>
@@ -7,20 +7,20 @@
     <link rel='stylesheet' href='{{ url_for('static', filename='style.css') }}'>
 </head>
 <body>
-    <h1>Bienvenue sur Lingua Franca!</h1> 
+    <h1>Welcome to Lingua Franca !</h1> 
     <div class="form-container">
         <form method="POST">
             <div class="language-selection">
                 <select name="source_language">
-                    <option value="auto">Détection automatique</option>
+                    <option value="auto">Automatic detection</option>
                     <option value="fr">Français</option>
                     <option value="en">Anglais</option>
-                    <!-- Ajoutez d'autres langues ici -->
+                    <!-- add other languages ​​here -->
                 </select>
                 <select name="target_language">
                     <option value="fr">Français</option>
                     <option value="en">Anglais</option>
-                    <!-- Ajoutez d'autres langues ici -->
+                    <!-- add other languages ​​here -->
                 </select>
                 <input type="submit" value="Traduire">
             </div>

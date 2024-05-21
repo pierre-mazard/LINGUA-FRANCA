@@ -16,14 +16,12 @@ class GoogleTranslate: # Creation of the GoogleTranslate class
             return translation.text
    
     def detect(self, text):
-        if set(text) <= {'0', '1'}:
+        if set(text) <= {'0', '1', ' '}:
             return 'binary'
         else:
             detection = self.translator.detect(text)
             return detection.lang
 
-
-    
     def text_to_binary(self, text):
         return ' '.join(format(ord(char), '08b') for char in text)
 

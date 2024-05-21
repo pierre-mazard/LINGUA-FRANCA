@@ -15,15 +15,23 @@ def index():
     translator = GoogleTranslate()
     translation = ''
     text_to_translate = ''
+    history_text = ''  # Nouvelle variable pour le texte de l'historique
+    history_translation = ''  # Nouvelle variable pour la traduction de l'historique
     if 'translations' not in session:
         session['translations'] = []
     if request.method == 'POST':
         text_to_translate = request.form['text_to_translate']
         source_language = request.form['source_language']
         target_language = request.form['target_language']
-        translation = translator.translate(text_to_translate, source_language, target_language)
+        if text_to_translate.strip() == '':
+            history_text = 'empty text field'
+            history_translation = 'empty text field'
+        else:
+            translation = translator.translate(text_to_translate, source_language, target_language)
+            history_text = text_to_translate
+            history_translation = translation
         # Store the translation in the session with the current time and languages
-        session['translations'].append((datetime.now().strftime("%Y-%m-%d %H:%M:%S"), source_language, target_language, text_to_translate, translation))
+        session['translations'].append((datetime.now().strftime("%Y-%m-%d %H:%M:%S"), source_language, target_language, history_text, history_translation))
         session.modified = True
     return render_template('index.html', translation=translation, text_to_translate=text_to_translate, translations=session['translations'])
 

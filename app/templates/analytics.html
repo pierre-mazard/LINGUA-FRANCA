@@ -1,0 +1,13 @@
+<!-- analytics.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Translation statistics</title>
+    <link rel='stylesheet' href='{{ url_for('static', filename='style.css') }}'>
+</head>
+<body>
+    <h1>Translation statistics</h1>
+    <img src="{{ url_for('static', filename='analytics/translation_analysis.png') }}" alt="Translation statistics">
+    <button onclick="location.href='{{ url_for('index') }}'">Back to home</button>
+</body>
+</html>

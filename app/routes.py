@@ -1,10 +1,11 @@
 # Defining application routes
-from flask import render_template, request, session, send_file, redirect, url_for, make_response
+from flask import render_template, request, session, send_file, redirect, url_for, make_response, send_from_directory
 from app import app
 from translator.google_translate import GoogleTranslate
 import csv
 import os
 from datetime import datetime
+from app.static.analytics.analysis import analyze_translations
 
 if not os.path.isdir('data/'):
     print("Le dossier 'data/' n'existe pas.")
@@ -71,3 +72,12 @@ def clear_history():
 
     # Redirect to the index page
     return redirect(url_for('index'))
+
+@app.route('/analytics', methods=['GET'])
+def analytics():
+    analyze_translations('../data')  # Call the analysis function
+    return render_template('analytics.html')
+
+@app.route('/analytics/image')
+def analytics_image():
+    return send_from_directory('app/static/analytics', 'translation_analysis.png')

@@ -70,7 +70,8 @@
             <p><strong>Translated:</strong> {{ translated }}</p>
             <hr>
             {% endfor %}
-        </div>            
+        </div> 
+        <button onclick="location.href='{{ url_for('analytics') }}'">Show statistics</button>       
     </div>
     <script src='{{ url_for('static', filename='script.js') }}'></script>
 </body>

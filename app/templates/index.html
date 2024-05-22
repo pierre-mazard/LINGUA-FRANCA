@@ -64,6 +64,8 @@
             </div>
             {% for time, source_lang, target_lang, original, translated in translations %}
             <p><strong>DateTime:</strong> {{ time }}</p>
+            <p><strong>Source Language:</strong> {{ source_lang }}</p>
+            <p><strong>Target Language:</strong> {{ target_lang }}</p>
             <p><strong>Original:</strong> {{ original }}</p>
             <p><strong>Translated:</strong> {{ translated }}</p>
             <hr>

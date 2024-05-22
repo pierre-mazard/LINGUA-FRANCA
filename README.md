@@ -13,7 +13,6 @@ lingua-franca/
 ├── data/                    # Folder for generated data files
 │   └── history.csv          # CSV file with translation history
 │
-├── picture/                 # Folder containing images displayed in the README 
 ├── translator/              # Folder containing the translation code
 │   ├── __init__.py          # Initializes the translation module
 │   └── google_translate.py  # Connects to Google's translation API

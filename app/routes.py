@@ -1,5 +1,5 @@
-# Defining application routes
-from flask import render_template, request, session, send_file, redirect, url_for, make_response, send_from_directory
+# routes.py
+from flask import render_template, request, session, redirect, url_for, send_from_directory
 from app import app
 from translator.google_translate import GoogleTranslate
 import csv
@@ -10,6 +10,10 @@ from app.static.analytics.analysis import analyze_translations
 if not os.path.isdir('data/'): # Check if the 'data/' directory exists
     print("The 'data/' directory does not exist")
 
+# Obtenez le chemin d'accès absolu du répertoire du script actuel
+script_dir = os.path.dirname(os.path.abspath(__file__))
+# Utilisez le chemin d'accès absolu pour accéder au répertoire de données
+data_dir = os.path.join(script_dir, '../data')
 
 @app.route('/', methods=['GET', 'POST'])
 # Function to render the index template
@@ -18,7 +22,7 @@ def index():
     translation = '' 
     text_to_translate = '' 
     history_text = ''  # New variable for the original text
-    history_translation = ''  # new variable for the translation of the history
+    history_translation = ''  # New variable for the translation of the history
     if 'translations' not in session: 
         session['translations'] = []
     if request.method == 'POST':
@@ -76,21 +80,30 @@ def clear_history():
     # Redirect to the index page
     return redirect(url_for('index'))
 
-# Get the absolute path of the directory of the current script
-script_dir = os.path.dirname(os.path.abspath(__file__))
-
-# Use the absolute path to access the data directory
-data_dir = os.path.join(script_dir, '../data')
-
 @app.route('/analytics', methods=['GET'])
 # Function to render the analytics template
 def analytics():
     # Call the function with the path to your data directory
     analyze_translations(data_dir)
-    return render_template('analytics.html')
+    
+    # Obtenir le chemin d'accès absolu pour le fichier de statistiques
+    stats_path = os.path.join(data_dir, 'translation_stats.txt')
+    with open(stats_path, 'r') as f:
+        # Lire les statistiques à partir du fichier
+        stats_data = f.read()
+        source_languages = stats_data.split('\n\n')[0]
+        target_languages = stats_data.split('\n\n')[1]
+        translation_length_stats = stats_data.split('\n\n')[2]
+        translation_time_stats = stats_data.split('\n\n')[3]
+
+    return render_template('analytics.html', 
+                           source_languages=source_languages,
+                           target_languages=target_languages,
+                           translation_length_stats=translation_length_stats,
+                           translation_time_stats=translation_time_stats)
 
 @app.route('/analytics/image')
 # Function to serve the image
 def analytics_image():
-    # Return the image from the 'app/static/analytics' directory
-    return send_from_directory('app/static/analytics', 'translation_analysis.png')
+    # Return the image from the 'data' directory
+    return send_from_directory('../data', 'translation_analysis.png')

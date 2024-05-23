@@ -4,10 +4,34 @@
 <head>
     <title>Translation statistics</title>
     <link rel='stylesheet' href='{{ url_for('static', filename='style.css') }}'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <h1>Translation statistics</h1>
-    <img src="{{ url_for('static', filename='analytics/translation_analysis.png') }}" alt="Translation statistics">
-    <button onclick="location.href='{{ url_for('index') }}'">Back to home</button>
+    
+    <!-- Affichage de l'image translation_analysis.png -->
+    <div class="image-container">
+        <img src="{{ url_for('analytics_image') }}" alt="Translation statistics">
+    </div>
+    
+    <div class="stats">
+        <h2>Summary Statistics</h2>
+        <ul>
+            <li>Most common source languages:</li>
+            <pre>{{ source_languages }}</pre>
+            <li>Most common target languages:</li>
+            <pre>{{ target_languages }}</pre>
+            <li>Summary statistics for translation lengths:</li>
+            <pre>{{ translation_length_stats }}</pre>
+            <li>Summary statistics for translation times:</li>
+            <pre>{{ translation_time_stats }}</pre>
+        </ul>
+    </div>
+    
+    <div class="history-controls">
+        <button onclick="location.href='{{ url_for('index') }}'">Back to home</button>
+    </div>
 </body>
 </html>
+
+

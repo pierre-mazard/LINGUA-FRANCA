@@ -2,27 +2,94 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
     color: rgb(23, 23, 100);
 }
 
-.title-container {
+h1 {
     text-align: center;
-    width: 100%;
+    margin-top: 20px;
 }
 
+.image-container {
+    width: 80%;
+    max-width: 600px;
+    margin: 20px 0;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.stats {
+    width: 80%;
+    max-width: 600px;
+    margin: 20px 0;
+}
+
+.stats ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.stats li {
+    margin: 10px 0;
+}
+
+.stats pre {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+button {
+    margin: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.history-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Media query for screens smaller than 600px */
+@media (max-width: 600px) {
+    .image-container {
+        width: 95%;
+    }
+
+    .stats {
+        width: 95%;
+    }
+}
+
+/* New styles for the index page */
 .form-container {
     width: 80%;
+    max-width: 800px;
     display: flex;
     flex-direction: column;
-    justify-self: center;
     align-items: center;
 }
 
 .language-selection {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
@@ -30,45 +97,36 @@ body {
 
 .text-areas {
     width: 100%;
-    height: 200px;
     display: flex;
     justify-content: space-between;
-}
-
-.text-areas textarea[name="text_to_translate"] {
-    color: darkred; 
-    background-color: azure;
-}
-
-.text-areas textarea[disabled] {
-    color: darkgreen; 
-    background-color: azure;
+    margin-bottom: 20px;
 }
 
 .text-areas textarea {
-    width: 45%;
+    width: 48%;
+    height: 150px;
+    padding: 10px;
+    font-size: 1em;
+}
+
+/* Style for the text to translate */
+.text-to-translate {
+    color: darkred; 
+}
+
+/* Style for the translated text */
+.translated-text {
+    color: darkgreen; 
 }
 
 .history-header {
-    display: flex;
-    margin-right: 10px;
-    justify-content: space-between;
-    align-items: center;
+    text-align: center;
     width: 100%;
 }
 
 .history-controls {
     display: flex;
+    justify-content: center;
     gap: 10px;
-}
-
-/* Media query for screens smaller than 600px */
-@media (max-width: 600px) {
-    .form-container {
-        width: 95%; /* Increase the width of the form container on small screens */
-    }
-
-    .text-areas textarea {
-        width: 100%; /* Make the text areas full width on small screens */
-    }
+    width: 100%;
 }

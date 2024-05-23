@@ -44,8 +44,8 @@
                 <input type="submit" value="Translate">
             </div>
             <div class="text-areas">
-                <textarea name="text_to_translate" placeholder="Enter text here">{{ text_to_translate }}</textarea>
-                <textarea disabled>{{ translation }}</textarea>
+                <textarea name="text_to_translate" placeholder="Enter text here" class="text-to-translate">{{ text_to_translate }}</textarea>
+                <textarea disabled class="translated-text">{{ translation }}</textarea>
             </div>
         </form>
         <div class="history">

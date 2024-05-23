@@ -1,6 +1,6 @@
 Most common source languages:
 Source Language
-auto      22
+auto      27
 binary     1
 fr         1
 en         1
@@ -10,34 +10,35 @@ Name: count, dtype: int64
 Most common target languages:
 Target Language
 fr        8
+binary    5
 it        4
-binary    4
-en        3
+en        4
+ja        3
 ar        2
-ja        2
-ko        1
+ko        2
 de        1
 ru        1
+es        1
 Name: count, dtype: int64
 
 Summary statistics for translation lengths:
-count      26.000000
-mean      263.961538
-std       816.546115
-min         6.000000
+count      31.000000
+mean      524.645161
+std      1495.956629
+min         3.000000
 25%        16.000000
-50%        33.500000
-75%        83.500000
-max      4193.000000
+50%        40.000000
+75%       368.000000
+max      7469.000000
 Name: Translated Text, dtype: float64
 
 Summary statistics for translation times:
-count    26.000000
-mean     12.423077
-std       2.548303
+count    31.000000
+mean     13.000000
+std       2.683282
 min      10.000000
 25%      10.000000
 50%      12.000000
-75%      14.750000
+75%      15.500000
 max      17.000000
 Name: Time, dtype: float64

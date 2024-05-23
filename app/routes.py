@@ -7,18 +7,19 @@ import os
 from datetime import datetime
 from app.static.analytics.analysis import analyze_translations
 
-if not os.path.isdir('data/'):
-    print("Le dossier 'data/' n'existe pas.")
+if not os.path.isdir('data/'): # Check if the 'data/' directory exists
+    print("The 'data/' directory does not exist")
 
 
 @app.route('/', methods=['GET', 'POST'])
-def index():
-    translator = GoogleTranslate()
-    translation = ''
-    text_to_translate = ''
+# Function to render the index template
+def index(): 
+    translator = GoogleTranslate() 
+    translation = '' 
+    text_to_translate = '' 
     history_text = ''  # New variable for the original text
     history_translation = ''  # new variable for the translation of the history
-    if 'translations' not in session:
+    if 'translations' not in session: 
         session['translations'] = []
     if request.method == 'POST':
         text_to_translate = request.form['text_to_translate']
@@ -36,7 +37,8 @@ def index():
         session.modified = True
     return render_template('index.html', translation=translation, text_to_translate=text_to_translate, translations=session['translations'])
 
-@app.route('/save_history', methods=['POST'])
+@app.route('/save_history', methods=['POST']) 
+# Function to save the history
 def save_history():
     # Check if the session is empty
     if not session['translations']:
@@ -66,6 +68,7 @@ def save_history():
 
 
 @app.route('/clear_history', methods=['POST'])
+# Function to clear the history
 def clear_history():
     # Clear the session
     session['translations'] = []
@@ -80,11 +83,14 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 data_dir = os.path.join(script_dir, '../data')
 
 @app.route('/analytics', methods=['GET'])
+# Function to render the analytics template
 def analytics():
     # Call the function with the path to your data directory
     analyze_translations(data_dir)
     return render_template('analytics.html')
 
 @app.route('/analytics/image')
+# Function to serve the image
 def analytics_image():
+    # Return the image from the 'app/static/analytics' directory
     return send_from_directory('app/static/analytics', 'translation_analysis.png')

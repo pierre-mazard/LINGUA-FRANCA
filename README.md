@@ -1,6 +1,6 @@
 App structure :
 
-lingua-franca/
+lingua-franca/ 
 │
 ├── app/
 │   ├── __init__.py

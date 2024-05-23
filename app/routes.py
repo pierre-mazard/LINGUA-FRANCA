@@ -73,9 +73,16 @@ def clear_history():
     # Redirect to the index page
     return redirect(url_for('index'))
 
+# Get the absolute path of the directory of the current script
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Use the absolute path to access the data directory
+data_dir = os.path.join(script_dir, '../data')
+
 @app.route('/analytics', methods=['GET'])
 def analytics():
-    analyze_translations('../data')  # Call the analysis function
+    # Call the function with the path to your data directory
+    analyze_translations(data_dir)
     return render_template('analytics.html')
 
 @app.route('/analytics/image')

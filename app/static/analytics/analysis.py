@@ -8,13 +8,18 @@ def analyze_translations(directory):
     # Get a list of all CSV files in the directory
     filenames = glob.glob(directory + '/*.csv')
 
+    # Print the directory path and the list of filenames
+    print("Directory path:", directory)
+    print("CSV files:", filenames)
+
     # Initialize an empty DataFrame to hold all the data
     data = pd.DataFrame()
 
     # Loop over the filenames and append each file's data to the DataFrame
     for filename in filenames:
-        df = pd.read_csv(filename)
-        data = data.append(df, ignore_index=True)
+        df = pd.read_csv(filename, encoding='utf-8')
+        print(type(data))
+        data = data._append(df, ignore_index=True)
 
     # Convert the 'Time' column to datetime
     data['Time'] = pd.to_datetime(data['Time'])
@@ -46,7 +51,7 @@ def analyze_translations(directory):
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Use the absolute path to access the data directory
-data_dir = os.path.join(script_dir, '../data')
+data_dir = os.path.join(script_dir, '../../../data')
 
 # Call the function with the path to your data directory
 analyze_translations(data_dir)

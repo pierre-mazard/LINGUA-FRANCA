@@ -80,7 +80,7 @@ def analyze_translations(directory):
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Use the absolute path to access the data directory
-data_dir = os.path.join(script_dir, '../../../data')
+data_dir = os.path.join(script_dir, '../data')
 
 # Call the function with the path to your data directory
 analyze_translations(data_dir)

@@ -42,16 +42,18 @@ Translator Flask app using Google Translate API
 
 ## Project files
 - **README.md** : Project details (this file)
+
 - **.gitignore** : Files ignored by Git
+
 - **requirements.txt** : Project dependencies
-- **scripts/** : Bash scripts
-    - **install.sh** : Install project
-        - Create virtual environment
-        - Install dependencies
-    - **run.sh** : Run server
-        - Activate virtual environment
-        - Run src/app.py
-- **src/** : Source files
+
+- **analytics/** : Bash scripts
+    - **analysis.py** : Transform data
+        - Into visual graphs
+        - Into a text format
+- **app/** : Source files
+    - **static/** : Static files dirs
+        - **style.css** : Project style
     - **templates/** : Contain HTML templates
         - **index.html** : The interface
     - **forms.py** : Contain TranlsationForm class
@@ -60,34 +62,7 @@ Translator Flask app using Google Translate API
         - `index()` : Display the interface
         - `detect()` : Detect the language
         - `translate()` : Translate the text
-    - **static/** : Static files dirs
-        - **js/** : JavaScript modules
-            - **constants.js** : Constants namespaces
-                - `DomElements` : Namespace for usefull HTML Dom elements
-                - `ApiRoutes` : Namespace for API routes
-            - **utils.js** : Utility functions namespaces
-                - `FormUtils` : Namespace for utility forms functions
-                    - `updateFormFields(form, formData)` : Update the form with the FormData object
-                    - `displayErrors(errors, defaultParentElement, errorMessageClass="error-message")` : Display the errors in the fields
-                - `ImgUtils` : Namespace for utility images functions
-                    - `displayIcon(element, src)` : Change src and display img
-            - **ajaxFunctions.js** : AJAX functions namespace
-                - `AjaxFunctions` : Namespace for AJAX calls
-                    - `detectLanguage(formData)` : Send a POST request to detect-language/ API route
-                    - `translate(formData)` : Send a POST request to translate/ API route
-            - **script.js** : Main JS script
-                - `submitTranslationForm()` : Submit the form to the backend and modify display with the response
-                - `reverseLanguages()` : Reverse source and target languages and submit form
-                - `EnableDisableReverseLanguages()` : Enable/disable reverse languages button
-                - `addFormChangeListeners()` : Add listeners on form fields to submit form when a field is modified
-                - `changeFlag(select)` : Change Flag icon
-                - `init()` : Initialize event listeners and put navigator language in target language
-            - **mapCountries.js** : Map languages and countries
-                - `languageToCountryMap` : Object to map countries with languages
-        - **css/** : CSS files
-            - **normalize.css** : To normalize styles
-            - **variables.css** : Variables (Colors ...)
-            - **style.css** : Project style
+
         - **images/** : Images files
             - **status/** : Status images
                 - **success.png** : Success image

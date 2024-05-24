@@ -56,20 +56,11 @@ Translator Flask app using Google Translate API
         - **style.css** : Project style
     - **templates/** : Contain HTML templates
         - **index.html** : The interface
-    - **forms.py** : Contain TranlsationForm class
+    - **routes.py** : Tell where the file should be stored
+- **data/** : Data storage 
+    - **history.csv** : cvs file where the data is stored
+    - **translation_analysis.png** : png of the multiple graphs based on the data collected
+    - **translation_stats.txt** : Text file based on the data collected
     - **translation.py** : Contain functions to connect to the translation API
-    - **app.py** : Contain the Flask app, and routes
-        - `index()` : Display the interface
-        - `detect()` : Detect the language
-        - `translate()` : Translate the text
-
-        - **images/** : Images files
-            - **status/** : Status images
-                - **success.png** : Success image
-                - **error.png** : Error image
-                - **loading.png** : Loading image
-            - **auto_language.png** : Flag icon for automatic detection language
-            - **background.png** : Background image
-            - **favicon.ico** : Icon
-            - **reverse_languages.png** : Image for reverse languages button
-  
+- **translator/** : This is where the translation happens
+    - **google_translate.py** : Detect the language, translate the text

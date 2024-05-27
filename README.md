@@ -2,6 +2,13 @@
 
 This repository contains the Lingua-Franca project, a language translation application using an API with the ability to analyze translation history data.
 
+## Table of Contents
+
+1. [Directory Structure](#directory-structure)
+2. [Getting Started](#getting-started)
+    - [Install](#install)
+    - [Use](#use)
+
 ## Directory Structure
 
 - **analytics/**: Contains the files related to data analysis.
@@ -61,3 +68,6 @@ To get started with Lingua-Franca, follow the installation instructions below an
 3. Enter the text you want to translate, select the source and target languages, and click "Translate".
 
 4. View the translated text and explore the application's features, including translation history and analytics.
+
+
+[Back to Top](#lingua-franca)

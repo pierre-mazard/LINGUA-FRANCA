@@ -56,13 +56,13 @@ def analyze_translations(directory):
     plt.ylabel('Number of Translations')
 
     plt.subplot(2, 2, 3)
-    plt.hist(translation_lengths, bins=20, color='salmon', alpha=0.7)
+    plt.hist(translation_lengths, bins=20, color='darkblue', alpha=0.7)
     plt.title('Distribution of Translation Lengths')
     plt.xlabel('Length of Translation (Number of Characters)')
     plt.ylabel('Frequency')
 
     plt.subplot(2, 2, 4)
-    plt.hist(translation_times, bins=24, color='lightcoral', alpha=0.7)
+    plt.hist(translation_times, bins=24, color='darkblue', alpha=0.7)
     plt.title('Distribution of Translation Times')
     plt.xlabel('Hour of the Day')
     plt.ylabel('Frequency')

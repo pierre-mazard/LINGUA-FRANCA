@@ -1,66 +1,63 @@
-App structure :
+# Lingua-Franca
 
-lingua-franca/ 
-│
-├── app/
-│   ├── __init__.py
-│   ├── routes.py           
-│   ├── static/
-│   │   ├── style.css
-│   │   └── analytics/       
-│   │       └── analysis.py  
-│   └── templates/
-│       ├── index.html       
-│       └── analytics.html  
-├── data/
-│   └── history.csv
-│
-├── translator/
-│   ├── __init__.py
-│   └── google_translate.py
-│
-├── .gitignore
-├── README.md
-└── requirements.txt
+This repository contains the Lingua-Franca project, a language translation application using an API with the ability to analyze translation history data.
 
-# lingua-franca
-Translator Flask app using Google Translate API
+## Directory Structure
 
-## Table of content
-- [lingua-franca](#lingua-franca)
-  - [Table of content](#table-of-content)
-  - [Getting started](#getting-started)
-    - [Install](#install)
-    - [Use](#use)
-  - [Project files](#project-files)
+- **analytics/**: Contains the files related to data analysis.
+  - `analysis.py`: Python script for analyzing translation data.
+  - `__pycache__/`: Cache directory for Python bytecode (automatically generated).
 
-## Getting started
+- **app/**: Contains the main application files.
+  - `__init__.py`: Initialization script for the Flask application.
+  - `routes.py`: Defines the URL routes and request handling logic.
+  - **static/**: Contains static files for the Flask application.
+    - `style.css`: CSS file for styling HTML templates.
+  - **templates/**: Contains HTML templates for the Flask application.
+    - `analytics.html`: HTML template for displaying analytics results.
+    - `index.html`: HTML template for the main application interface.
+
+- **data/**: Contains data files generated and used by the application.
+  - `translation_analysis.png`: Image file for visualizing translation analysis.
+  - `translation_stats.txt`: Text file containing statistics from translation analysis.
+  - `translation_history.csv`: CSV file storing the history of translations.
+
+- **translator/**: Contains files related to the translation functionality.
+  - `__init__.py`: Initialization script for the translator module.
+  - `google_translate.py`: Python script for Google Translation API integration.
+  - `__pycache__/`: Cache directory for Python bytecode (automatically generated).
+
+- **README.md**: This file, containing information about the project and its structure.
+- **requirements.txt**: File listing the Python dependencies required to run the project.
+- **.gitignore**: File specifying which files and directories to ignore in version control.
+
+
+## Getting Started
+
+To get started with Lingua-Franca, follow the installation instructions below and then learn how to use the application.
+
 ### Install
-<!-- a faire -->
-### Use
-<!-- à faire -->
 
-## Project files
-- **README.md** : Project details (this file)
+1. Clone this repository to your local machine.
+   ```bash
+   git clone https://github.com/pierre-mazard/LINGUA-FRANCA.git
 
-- **.gitignore** : Files ignored by Git
+2. Navigate into the project directory.
+    ```bash
+    cd Lingua-Franca
 
-- **requirements.txt** : Project dependencies
+3. Instal the required Python dependencies using pip.
+    ```bash
+    pip install -r requirements.txt
 
-- **analytics/** : Bash scripts
-    - **analysis.py** : Transform data
-        - Into visual graphs
-        - Into a text format
-- **app/** : Source files
-    - **static/** : Static files dirs
-        - **style.css** : Project style
-    - **templates/** : Contain HTML templates
-        - **index.html** : The interface
-    - **routes.py** : Tell where the file should be stored
-- **data/** : Data storage 
-    - **history.csv** : cvs file where the data is stored
-    - **translation_analysis.png** : png of the multiple graphs based on the data collected
-    - **translation_stats.txt** : Text file based on the data collected
-    - **translation.py** : Contain functions to connect to the translation API
-- **translator/** : This is where the translation happens
-    - **google_translate.py** : Detect the language, translate the text
+## Use
+
+1. After installing dependencies, start the Flask application.
+    ```bash
+    flask run
+
+2. Open your web browser and navigate to http://localhost:5000 to access the Lingue-Franca application.
+
+3. Enter the text you want to translate, select the source and target languages, and click "Translate".
+
+4. View the translated text and explore the application's features, including translation history and analytics.

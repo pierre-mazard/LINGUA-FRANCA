@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
 import glob
 import os
 
@@ -40,14 +41,16 @@ def analyze_translations(directory):
     # Plot the results
     plt.figure(figsize=(12, 10))
 
+    cmap = plt.cm.Blues
+
     plt.subplot(2, 2, 1)
-    source_languages.plot(kind='bar', color='skyblue')
+    source_languages.plot(kind='bar', color=cmap(np.linspace(1, 0, len(source_languages))), edgecolor='black')
     plt.title('Source Languages')
     plt.xlabel('Language')
     plt.ylabel('Number of Translations')
 
     plt.subplot(2, 2, 2)
-    target_languages.plot(kind='bar', color='lightgreen')
+    target_languages.plot(kind='bar', color=cmap(np.linspace(1, 0, len(target_languages))), edgecolor='black')
     plt.title('Target Languages')
     plt.xlabel('Language')
     plt.ylabel('Number of Translations')
@@ -55,7 +58,7 @@ def analyze_translations(directory):
     plt.subplot(2, 2, 3)
     plt.hist(translation_lengths, bins=20, color='salmon', alpha=0.7)
     plt.title('Distribution of Translation Lengths')
-    plt.xlabel('Length of Translation')
+    plt.xlabel('Length of Translation (Number of Characters)')
     plt.ylabel('Frequency')
 
     plt.subplot(2, 2, 4)

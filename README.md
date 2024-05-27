@@ -12,6 +12,10 @@ This repository contains the Lingua-Franca project, a language translation appli
 3. [Translation Capabilities](#translation-capabilities)
 4. [Translation History](#translation-history)
 5. [Adding Additional Languages](#adding-additional-languages)
+6. [Show Statistics](#show-statistics)
+    - [Translation Analysis](#translation-analysis)
+        - [Translation_analysis.png](#translation_analysispng)
+        - [Translation_analysis.txt](#translation_statstxt)        
 
 ## Directory Structure
 
@@ -75,8 +79,6 @@ To get started with Lingua-Franca, follow the installation instructions below an
 Users can also download the executable directly from the project page [Download the Executable](https://github.com/pierre-mazard/LINGUA-FRANCA/raw/master/dist/install.exe) and run it to install the application. The folder will be installed wherever the executable file is run.
 
 
-    
-
 ## Use
 
 1. After installing dependencies, start the Flask application.
@@ -135,5 +137,29 @@ Ensure that the new languages added in the HTML file are supported by the transl
                     <!-- add other languages ​​here -->
                 </select>                
 ```
+
+## Show Statistics
+
+You can view statistics about the project by visiting the "show statistics" page. This page provides detailed insights into various metrics and data related to the project's performance.
+
+### Translation Analysis
+
+The translation analysis provides insights into the translations performed by the application. Here are some key statistics derived from the analysis:
+
+- **Most Common Source Languages:** The most frequently encountered source languages in the translations.
+- **Most Common Target Languages:** The most frequently encountered target languages in the translations.
+- **Summary Statistics for Translation Lengths:** Statistical summary of the lengths of translations, including mean, standard deviation, minimum, maximum, and quartiles.
+- **Summary Statistics for Translation Times:** Statistical summary of the times of translations, including mean, standard deviation, minimum, maximum, and quartiles.
+
+#### `translation_analysis.png`
+
+This image file contains graphical representations of the translation analysis statistics. It visualizes the distribution of translation lengths and translation times, providing a quick overview of the data.
+
+#### `translation_stats.txt`
+
+This text file contains detailed statistics from the translation analysis. It includes the most common source and target languages, as well as summary statistics for translation lengths and times. These statistics can be useful for further analysis and interpretation of the translation data.
+
+Feel free to explore the statistics and gain valuable insights into the project's translation activities.
+
 
 [Back to Top](#lingua-franca)

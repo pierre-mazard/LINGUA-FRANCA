@@ -99,8 +99,7 @@ The Lingua-Franca application allows users to translate text into various langua
 The translation history data is stored in the translation_history.csv file. This file contains records of past translations, including the date and time, source language, target language, original text, and translated text.
 
 ## Adding Additional Languages
-To add more languages to the translat
-ion options in the application, you can modify the index.html file located in the templates directory. Within the `<select>` elements for source and target languages, you can add new `<option>` elements for additional languages. Ensure that the value attribute of each `<option>` corresponds to the language code recognized by the translation API.
+To add more languages to the translation options in the application, you can modify the index.html file located in the templates directory. Within the `<select>` elements for source and target languages, you can add new `<option>` elements for additional languages. Ensure that the value attribute of each `<option>` corresponds to the language code recognized by the translation API.
 
 Ensure that the new languages added in the HTML file are supported by the translation API you are using.
 

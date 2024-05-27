@@ -1,4 +1,3 @@
-# analysis.py
 import pandas as pd
 import matplotlib.pyplot as plt
 import glob
@@ -6,7 +5,7 @@ import os
 
 def analyze_translations(directory):
     # Get a list of all CSV files in the directory
-    filenames = glob.glob(directory + '/*.csv')
+    filenames = glob.glob(os.path.join(directory, '*.csv'))
 
     # Initialize an empty DataFrame to hold all the data
     data = pd.DataFrame()
@@ -16,13 +15,14 @@ def analyze_translations(directory):
         df = pd.read_csv(filename, encoding='utf-8')
         data = data._append(df, ignore_index=True)
 
-    # Filter out rows where 'Original Text' or 'Translated Text' are 'empty text field'
-    data = data[(data['Original Text'] != 'empty text field') & (data['Translated Text'] != 'empty text field')]
-
+    # Check if DataFrame is empty
     if data.empty:
         with open(os.path.join(directory, 'translation_stats.txt'), 'w') as f:
             f.write("No data available for analysis.")
         return
+
+    # Filter out rows where 'Original Text' or 'Translated Text' are 'empty text field'
+    data = data[(data['Original Text'] != 'empty text field') & (data['Translated Text'] != 'empty text field')]
 
     # Convert the 'Time' column to datetime
     data['Time'] = pd.to_datetime(data['Time'])
@@ -89,6 +89,10 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Use the absolute path to access the data directory
 data_dir = os.path.join(script_dir, '../data')
+
+# Create the data directory if it doesn't exist
+if not os.path.exists(data_dir):
+    os.makedirs(data_dir)
 
 # Call the function with the path to your data directory
 analyze_translations(data_dir)

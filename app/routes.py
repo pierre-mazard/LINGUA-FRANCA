@@ -52,10 +52,14 @@ def save_history():
         writer = csv.writer(f)
         if os.path.getsize(filename) == 0:  # Write header if file is empty
             writer.writerow(["Time", "Source Language", "Target Language", "Original Text", "Translated Text"])
-        writer.writerows(session['translations'])
-    
+        for entry in session['translations']:
+            # Check if any field is empty
+            if all(field != 'empty text field' for field in entry):
+                writer.writerow(entry)
+
     session['translations'] = []
     return redirect(url_for('index'))
+
 
 
 @app.route('/clear_history', methods=['POST'])

@@ -6,7 +6,7 @@
 </head>
 <body>
     <div class="title-container">
-        <h1>Welcome to Lingua Franca !</h1>
+        <h1>Welcome to Lingua Franca!</h1>
     </div>     
     <div class="form-container">
         <!-- translate formulaire -->
@@ -54,11 +54,15 @@
                 <div class="history-controls">
                     <!-- Formulaire Save History -->
                     <form method="POST" action="/save_history">
-                        <input type="submit" value="Save History">
+                        <input type="submit" value="Save History on CSV file">
                     </form>
                     <!-- Formulaire Clear History -->
                     <form method="POST" action="/clear_history">
-                        <input type="submit" value="Clear History">
+                        <input type="submit" value="Clear History on the page">
+                    </form>
+                    <!-- Formulaire Clear CSV -->
+                    <form method="POST" action="/clear_csv">
+                        <input type="submit" value="Clear History CSV File">
                     </form>
                 </div>
             </div>

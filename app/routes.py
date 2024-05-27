@@ -1,4 +1,5 @@
 # routes.py
+import glob
 from flask import render_template, request, session, redirect, url_for, send_from_directory
 from app import app
 from translator.google_translate import GoogleTranslate
@@ -41,19 +42,34 @@ def index():
 def save_history():
     if not session['translations']:
         return redirect(url_for('index'))
-    now = datetime.now()
-    date_time = now.strftime("%Y-%m-%d_%H-%M-%S")
-    filename = os.path.join(data_dir, date_time + '_history.csv')
-    with open(filename, 'w', newline='', encoding='utf-8') as f:
+
+    # Ensure 'data/' directory exists
+    if not os.path.isdir(data_dir):
+        os.makedirs(data_dir)
+
+    filename = os.path.join(data_dir, 'translations_history.csv')
+    with open(filename, 'a', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
-        writer.writerow(["Time", "Source Language", "Target Language", "Original Text", "Translated Text"])
+        if os.path.getsize(filename) == 0:  # Write header if file is empty
+            writer.writerow(["Time", "Source Language", "Target Language", "Original Text", "Translated Text"])
         writer.writerows(session['translations'])
+    
     session['translations'] = []
     return redirect(url_for('index'))
+
 
 @app.route('/clear_history', methods=['POST'])
 def clear_history():
     session['translations'] = []
+    return redirect(url_for('index'))
+
+@app.route('/clear_csv', methods=['POST'])
+def clear_csv():
+    filenames = glob.glob(os.path.join(data_dir, '*.csv'))
+    for filename in filenames:
+        with open(filename, 'w', newline='', encoding='utf-8') as f:
+            writer = csv.writer(f)
+            writer.writerow(["Time", "Source Language", "Target Language", "Original Text", "Translated Text"])
     return redirect(url_for('index'))
 
 @app.route('/analytics', methods=['GET'])
@@ -62,11 +78,15 @@ def analytics():
     stats_path = os.path.join(data_dir, 'translation_stats.txt')
     with open(stats_path, 'r') as f:
         stats_data = f.read()
-        source_languages = stats_data.split('\n\n')[0]
-        target_languages = stats_data.split('\n\n')[1]
-        translation_length_stats = stats_data.split('\n\n')[2]
-        translation_time_stats = stats_data.split('\n\n')[3]
-    return render_template('analytics.html', source_languages=source_languages, target_languages=target_languages, translation_length_stats=translation_length_stats, translation_time_stats=translation_time_stats)
+    if "No data available" in stats_data:
+        return render_template('analytics.html', no_data=True)
+    else:
+        sections = stats_data.split('\n\n')
+        source_languages = sections[0] if len(sections) > 0 else "No data available"
+        target_languages = sections[1] if len(sections) > 1 else "No data available"
+        translation_length_stats = sections[2] if len(sections) > 2 else "No data available"
+        translation_time_stats = sections[3] if len(sections) > 3 else "No data available"
+        return render_template('analytics.html', no_data=False, source_languages=source_languages, target_languages=target_languages, translation_length_stats=translation_length_stats, translation_time_stats=translation_time_stats)
 
 @app.route('/analytics/image')
 def analytics_image():

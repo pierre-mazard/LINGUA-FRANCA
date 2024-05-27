@@ -16,6 +16,14 @@ def analyze_translations(directory):
         df = pd.read_csv(filename, encoding='utf-8')
         data = data._append(df, ignore_index=True)
 
+    # Filter out rows where 'Original Text' or 'Translated Text' are 'empty text field'
+    data = data[(data['Original Text'] != 'empty text field') & (data['Translated Text'] != 'empty text field')]
+
+    if data.empty:
+        with open(os.path.join(directory, 'translation_stats.txt'), 'w') as f:
+            f.write("No data available for analysis.")
+        return
+
     # Convert the 'Time' column to datetime
     data['Time'] = pd.to_datetime(data['Time'])
 

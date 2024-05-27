@@ -1,11 +1,11 @@
 import os
 import subprocess
 
-# Cloner le repository
+# Clone the repository
 subprocess.run(["git", "clone", "https://github.com/pierre-mazard/LINGUA-FRANCA.git"])
 
-# Naviguer dans le répertoire du projet
+# Navigate to the project directory
 os.chdir("LINGUA-FRANCA")
 
-# Installer les dépendances Python
+# Install Python dependencies
 subprocess.run(["pip", "install", "-r", "requirements.txt"])

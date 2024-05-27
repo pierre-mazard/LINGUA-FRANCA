@@ -72,7 +72,7 @@ To get started with Lingua-Franca, follow the installation instructions below an
 
 ### Downloading the Executable
 
-Users can also download the executable directly from the project page [Download the Executable](https://github.com/pierre-mazard/LINGUA-FRANCA/raw/master/dist/install.exe) and run it to install the application. The folder will be installed wherever the executable file is run.
+Users can also download the executable directly from the project page [Download the Executable](https://github.com/pierre-mazard/LINGUA-FRANCA/raw/master/dist/Lingua_Franca_install.exe) and run it to install the application. The folder will be installed wherever the executable file is run.
 
 
     

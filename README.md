@@ -75,7 +75,7 @@ To get started with Lingua-Franca, follow the installation instructions below an
     pip install -r requirements.txt
 
 ### Downloading the Executable
-
+! Not Finished !
 Users can also download the executable directly from the project page [Download the Executable](https://github.com/pierre-mazard/LINGUA-FRANCA/raw/master/dist/Lingua_Franca_install.exe) and run it to install the application. The folder will be installed wherever the executable file is run.
 
 
